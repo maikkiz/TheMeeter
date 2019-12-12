@@ -59,14 +59,31 @@ const Holidays = ({navigation}) => {
         }}
       />
 
+  <Text style={{textAlign:'center', fontSize:25, marginTop:10}}>Etsi vuoden perusteella</Text>
       <Input 
         placeholder="Vuosi"
         onChangeText={(findYear) => setFindYear(findYear)}
-        inputContainerStyle={{marginLeft: 15, marginRight: 15}}
+        inputContainerStyle={{marginLeft:43,marginRight:43}}
         value={findYear} 
       />
-      <Button buttonStyle={{margin: 15}} title="Etsi" onPress={fetchNextHolidays}/>
+      <Button 
+      type="outline"
+      buttonStyle={{
+        marginLeft: 50,
+        marginRight: 50,
+        marginTop: 20,
+        marginBottom: 15,
+        borderColor: "grey"
+        }} 
+        title="Etsi" 
+        titleStyle={{
+          color: "grey"
+        }}
+        onPress={fetchNextHolidays}
+        />
+    
       <ScrollView>
+        <Text style={{textAlign:'center', fontSize:25}}>Pyhäpäivät</Text>
         {
           holidays.map((holiday, index) => (
             <ListItem

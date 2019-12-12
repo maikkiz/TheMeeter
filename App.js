@@ -9,6 +9,9 @@ import AddMeeting from './src/AddMeeting';
 const AppNavigator = createDrawerNavigator({
   Kokoukset: {
     screen: Home,
+    navigationOptions: {
+      title: "Kokoukset"
+    }
   },
   Uusi: {
     screen: AddMeeting,

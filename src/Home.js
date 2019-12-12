@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, Text } from 'react-native';
-import { Header, Button, Input, ListItem } from 'react-native-elements';
+import { Header, ListItem } from 'react-native-elements';
 import firebase from './Firebase';
-import DatePicker from 'react-native-datepicker'
 import Icon from 'react-native-vector-icons/EvilIcons';
 import { ScrollView } from 'react-native-gesture-handler';
 import Modal from 'react-native-modal';
@@ -11,15 +10,9 @@ import moment from 'moment';
 
 const Home = ({navigation}) => {
 
-  //const{ navigate} = props.navigation;
-
   const [meetings, setMeetings] = useState([]);
   const [id, setId] = useState('');
   //const [isModalVisible, toggleModal] = useState(false);
-
- // const input1 = React.createRef();
-  //const input2 = React.createRef();
-  const input3 = React.createRef();
 
   //.orderByChild('date')
   React.useEffect(() => {
@@ -38,10 +31,7 @@ const Home = ({navigation}) => {
 
   const deleteMeeting = (index) => {
     firebase.database().ref('items/' + id[index]).remove();
-    console.log(id[index])
   }
-
-  console.log(meetings)
 
 return (
   <View style={styles.container}>
@@ -60,7 +50,9 @@ return (
  
 
     <View style={styles.container}>
-      <Text>Kokoukset</Text>
+      <View style={styles.title}>
+      <Text style={{fontSize: 25}}>Kokoukset</Text>
+      </View>
      
 <ScrollView>
     {
@@ -83,7 +75,7 @@ return (
                   name="trash" 
                   color="red" 
                   size={25} 
-                  onPress={() => deleteMeeting(index)}   //lähetetään todon id delete metodille
+                  onPress={() => deleteMeeting(index)}
                 /> 
               }
               bottomDivider
@@ -103,18 +95,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
-   // alignItems: 'center',
-   // justifyContent: 'center',
   },
-  place: {
+  title: {
     alignItems: 'center',
-    justifyContent: 'flex-end',
-    flexDirection: 'row',
-    marginRight:18,
-    marginLeft:15,
-    marginTop:15,
-    marginBottom:15,
+    marginTop: 10,
+    marginBottom: 5
   }
+ 
   });
 
   export default Home;

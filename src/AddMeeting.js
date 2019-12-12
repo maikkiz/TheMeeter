@@ -12,7 +12,7 @@ const AddMeeting = ({navigation}) => {
 
   //const{ navigate} = props.navigation;
 
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState();
   const [time, setTime] = useState('');
   const [place, setPlace] = useState('');
   //const [isModalVisible, toggleModal] = useState(false);
@@ -48,6 +48,8 @@ return (
                     justifyContent: 'space-around',
                 }}
             />
+            <View style={styles.pickers}>
+                <Text style={{fontSize: 25, marginBottom:5}}>Uusi kokous</Text>
    <DatePicker
         style={{width: '90%', marginTop:10}}
         date={date}
@@ -62,9 +64,16 @@ return (
         }
         customStyles={{
           dateInput: {
-            margin: 15
+            margin: 15,
+            borderRadius:3
+          },
+          placeholderText: {
+            textAlign:'left',
+            fontSize:18
           }
+        
         }}
+        
         onDateChange={date => setDate(date)}
       />
        <DatePicker
@@ -84,17 +93,20 @@ return (
         customStyles={{
           dateInput: {
             margin: 15,
-            textAlign:'left' 
+            textAlign:'left',
+            borderRadius:3 
           },
           placeholderText: {
-            textAlign:'left'
+            textAlign:'left',
+            fontSize:18
           }
           
         }}
         onDateChange={time => setTime(time)}
       />
+      </View>
 <View style={styles.place}>
-       <Input 
+       <Input
         placeholder='Paikka'
         inputContainerStyle={{marginLeft:43,marginRight:5}}
         onChangeText={place => setPlace(place)}
@@ -107,9 +119,38 @@ return (
             size={35}
           />
           </View>
-      
-      <Button buttonStyle={{margin: 15}} onPress={saveMeeting} onPressIn={() => navigation.openDrawer()} title=" Tallenna " />
-    </View>
+      <View style={{width:'100%', flex:1, flexDirection:'row', marginTop:15}}>
+      <View style={{flex:6}}>
+      <Button 
+      type="outline"
+      buttonStyle={{
+        marginLeft: 32,
+        marginRight: 6,
+        
+        marginBottom: 15,
+        borderColor: "grey",
+      //  width: "90%"
+        }} 
+        title="Etsi" 
+        titleStyle={{
+          color: "grey"
+        }} 
+        onPress={saveMeeting} 
+        onPressIn={() => navigation.openDrawer()} 
+        title=" Tallenna " />
+         </View>
+        <View style={{flex:1, marginLeft:10, marginRight:3, marginTop:3}}>
+
+<Icon
+            name='plus'
+            size={35}
+            
+          />
+          </View>
+           </View>
+           </View>
+        
+    
 );
 
 }
@@ -118,7 +159,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+    
+  },
+  pickers: {
     alignItems: 'center',
+    marginTop:10,
   },
 
   place: {
@@ -129,6 +174,14 @@ const styles = StyleSheet.create({
     marginLeft:15,
     marginTop:15,
     marginBottom:15,
+  },
+  button: {
+    justifyContent: 'space-around',
+    flexDirection: 'row',
+ //   marginRight:18,
+ //   marginLeft:15,
+ //   marginTop:15,
+  //  marginBottom:15,  
   }
   });
 
