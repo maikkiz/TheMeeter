@@ -26,7 +26,7 @@ const AppNavigator = createDrawerNavigator({
     }
   },
 },
-  {
+{
   initialRouteName: 'Kokoukset',
   contentComponent: CustomDrawer,
   drawerOpenRoute: 'DrawerOpen',
@@ -38,7 +38,7 @@ const AppContainer =  createAppContainer(AppNavigator);
 
 export default function App() {
 
-return (
-  <AppContainer />
-);
+  return (
+    <AppContainer />
+  );
 }

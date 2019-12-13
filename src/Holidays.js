@@ -48,18 +48,27 @@ const Holidays = ({navigation}) => {
     <View style={styles.container}>
       <Header
         leftComponent={ 
-          <Icon name= 'navicon' color= '#696969' size={35}
-                onPress={() => navigation.openDrawer()}
+          <Icon 
+            name='navicon' 
+            color='#696969'
+            size={35}
+            onPress={() => navigation.openDrawer()}
           />
         } 
-        centerComponent={{ text: 'The Meeter', style: { color: '#696969', fontSize: 30 } }}
+        centerComponent={{ 
+          text: 'The Meeter', 
+          style: { 
+            color: '#696969', 
+            fontSize: 30 
+          } 
+        }}
         containerStyle={{
           backgroundColor: '#dcdcdc',
           justifyContent: 'space-around',
         }}
       />
 
-  <Text style={{textAlign:'center', fontSize:25, marginTop:10}}>Etsi vuoden perusteella</Text>
+      <Text style={{textAlign:'center', fontSize:25, marginTop:10}}>Etsi vuoden perusteella</Text>
       <Input 
         placeholder="Vuosi"
         onChangeText={(findYear) => setFindYear(findYear)}
@@ -67,20 +76,20 @@ const Holidays = ({navigation}) => {
         value={findYear} 
       />
       <Button 
-      type="outline"
-      buttonStyle={{
-        marginLeft: 50,
-        marginRight: 50,
-        marginTop: 20,
-        marginBottom: 15,
-        borderColor: "grey"
+        type="outline"
+        buttonStyle={{
+          marginLeft: 50,
+          marginRight: 50,
+          marginTop: 20,
+          marginBottom: 15,
+          borderColor: "grey"
         }} 
         title="Etsi" 
         titleStyle={{
           color: "grey"
         }}
         onPress={fetchNextHolidays}
-        />
+      />
     
       <ScrollView>
         <Text style={{textAlign:'center', fontSize:25}}>Pyhäpäivät</Text>
